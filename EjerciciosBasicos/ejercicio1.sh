@@ -17,3 +17,15 @@ fi
 #read numero
 #O bien directamente con el read
 #read -p "Escriba un número: " numero
+
+: '
+	Otra versión del código sin variable intermedia, sería así.
+
+	read -p "Escribe un número: " numero
+
+	if [ $(($numero%2)) -eq 0 ]; then
+		echo "$numero es par"
+	else
+		echo "$numero, es impar"
+	fi
+'
