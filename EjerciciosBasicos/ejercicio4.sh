@@ -2,8 +2,8 @@
 
 : '
 	Diseñar un script que sume todos los números que se leen. Mostrará un
-	mensaje que diga: “La suma de los n números indicados es: Suma”, dónde n es la cantidad de
-	números pasados por parámetro y Suma, la suma de todos ellos.
+	mensaje que diga: “La suma de los contador números indicados es: resultado”, dónde contador es la cantidad de
+	números pasados y resultado, la suma de todos ellos.
 
 '
 
@@ -15,5 +15,4 @@ while [ $opcion != "no" ]; do
 	contador=`expr $contador + 1`
 done
 
-echo "La suma es= $resultado"
-echo "Has sumado: $contador, números"
+echo "La suma de los $contador números es: $resulatado"
