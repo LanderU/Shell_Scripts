@@ -15,4 +15,4 @@ while [ $opcion != "no" ]; do
 	contador=`expr $contador + 1`
 done
 
-echo "La suma de los $contador números es: $resulatado"
+echo "La suma de los $contador números es: $resultado"
