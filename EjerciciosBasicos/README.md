@@ -11,3 +11,4 @@ Ejercicios Básicos
 5. Practica la asignación y acceso a variables asignando cada día de la semana a una variable. Muestra el valor de todas las variables con el formato siguiente: “Semana: Lunes Martes Miércoles Jueves Viernes Sábado Domingo. Ahora crea la variable SEMANA que contenga la lista de días de la semana separados por espacios. Muestra la variable SEMANA. 
 6. Programa que imprima en pantalla el contenido de un fichero de datos, o el contenido de todos los ficheros de un directorio dependiendo de si el parámetro que se le pasa es fichero o directorio. En cualquier otro caso se informará al usuario de que no es ni fichero ni directorio.
 7. Programa que borre con confirmación todos los ficheros indicados.
+8. Realizar un script que traduzca una nota que se introduzca por teclado a la calificación correspondiente (Sobresaliente, Notable, Bien, Aprobado, Suspenso). Si la nota no es válida se informará al usuario.
