@@ -14,9 +14,13 @@
 	-ge: Mayor o igual que
 
 '
-
-if [ $1 -lt $2 ]; then
-	echo "Sumamos= $(($1+$2))"
-else 
-	echo "Restamos= $(($1-$2))"
+if [ $# -ne 2 ]; then
+	echo "Recuerda pasar por parametro dos números, para hacer esto ejemplo: nombre_script.sh 1 2"
+	break
+else
+	if [ $1 -lt $2 ]; then
+		echo "Sumamos= $(($1+$2))"
+	else 
+		echo "Restamos= $(($1-$2))"
+	fi
 fi
