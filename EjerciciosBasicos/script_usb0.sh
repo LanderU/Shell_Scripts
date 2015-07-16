@@ -1,8 +1,8 @@
 #! /bin/bash
 
-continuar="si"
+
 if [ "`ifconfig usb0 2>/dev/null`" ]; then
-	while [ $continuar=="si" ]; do
+	while [ $(continuar="si")=="si" ]; do
 		sudo ifconfig usb0 192.168.7.1
 		sleep 5
 		if [ "`ifconfig usb0 2>/dev/null`"  ]; then
