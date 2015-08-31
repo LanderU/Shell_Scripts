@@ -12,3 +12,5 @@ Ejercicios Básicos
 6. Programa que imprima en pantalla el contenido de un fichero de datos, o el contenido de todos los ficheros de un directorio dependiendo de si el parámetro que se le pasa es fichero o directorio. En cualquier otro caso se informará al usuario de que no es ni fichero ni directorio.
 7. Programa que borre con confirmación todos los ficheros indicados.
 8. Realizar un script que traduzca una nota que se introduzca por teclado a la calificación correspondiente (Sobresaliente, Notable, Bien, Aprobado, Suspenso). Si la nota no es válida se informará al usuario.
+9. Script que añade la línea #!/bin/bash al principio del fichero que le pases como parámetro, si es que ya no lo tiene.
+
