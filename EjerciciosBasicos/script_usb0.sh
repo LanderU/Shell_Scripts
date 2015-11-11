@@ -18,9 +18,9 @@ if [ "`ifconfig usb0 2>/dev/null`" ]; then
 			continuar="s"
 		else
 			clear
-			red()
+			red
 			echo "Has desconectado la BBB, salimos"
-			revert()
+			revert
 			break
 		fi
 	done
