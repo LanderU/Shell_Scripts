@@ -9,7 +9,7 @@
 
 read -p "Escriba el archivo [ruta] o directorio del que se quiere ver el contenido: " archfiche
 
-if test -d "$arcfiche"
+if test -d "$archfiche"
  then
 	echo `ls $archfiche`
 elif test -f "$archfiche" 
