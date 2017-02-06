@@ -1,0 +1,96 @@
+#!/bin/bash
+
+: '
+  Author Lander Usategui lander@erlerobotics.com
+'
+
+#####################
+#     FUNCTIONS     #
+#####################
+
+function main()
+{
+  CURRENT_USER=`whoami`
+
+  if [ ${CURRENT_USER} = 'root' ]; then
+    load_module
+  else
+    echo "\"sudo\" is needed..."
+    exit -1
+  fi
+} # end check_user
+
+function load_module()
+{
+  INTERFACE=`ifconfig | grep eth | awk '{print $1}'`
+
+  contRX=1
+  indexRX=0
+  arrayRX=( )
+  for i in $INTERFACE; do
+    echo $contRX"- "$i
+    arrayRX[$indexRX]=$i
+    contRX=$(($contRX+1))
+    indexRX=$(($indexRX+1))
+  done
+  # Read option
+  read -p "Choose the RX interface: " RXINTERFACE
+
+  if [ $RXINTERFACE -gt ${#arrayRX[@]} ] || [ $RXINTERFACE -lt 0 ]; then
+    echo "Error: Invalid network device launch again the script..."
+    exit -1
+  else
+
+    RXINTERFACE=$(($RXINTERFACE - 1 ))
+    RX_MAC=$(echo "`ifconfig  ${arrayRX[$RXINTERFACE]} | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'`")
+
+    # Read option
+    read -p "Do you want select TX interface(y/n)?: " CHOOSE
+
+    if echo "$CHOOSE" | grep -iq "^y" ; then
+      # TX interface
+      contTX=1
+      indexTX=0
+      arrayTX=( )
+      for i in $INTERFACE; do
+        echo $contTX"- "$i
+        arrayRX[$indexTX]=$i
+        contRX=$(($contTX+1))
+        indexRX=$(($indexTX+1))
+      done
+
+      # Read option
+      read -p "Choose the TX interface: " RXINTERFACE
+
+      if [ $TXINTERFACE -gt ${#arrayTX[@]} ] || [ $TXINTERFACE -lt 0 ]; then
+        echo "Error: Invalid network device launch again the script..."
+        exit -1
+      else
+        TXINTERFACE=$(($TXINTERFACE - 1 ))
+        TX_MAC=$(echo "`ifconfig  ${arrayTX[$TXINTERFACE]} | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'`")
+        insmod /lib/modules/$(uname -r)/ecslave.ko rxmac=$RX_MAC txmac=$TX_MAC 2>/dev/null
+        # Check modules
+        CHECK_MODULE=`lsmod | grep ecslave | awk '{print $1}'`
+        if [ ${CHECK_MODULE} = "ecslave" ]; then
+          echo "Done"
+        else
+          echo "Unable to find \"ecslave\" module"
+        fi
+      fi
+    else
+      insmod /lib/modules/$(uname -r)/ecslave.ko rxmac=$RX_MAC 2>/dev/null
+      # Check modules
+      CHECK_MODULE=`lsmod | grep ecslave | awk '{print $1}'`
+      if [ ${CHECK_MODULE} = "ecslave" ]; then
+        echo "Done"
+      else
+        echo "Unable to find \"ecslave\" module"
+      fi
+    fi
+
+  fi
+
+} #end select_interface
+
+# Main function
+main
