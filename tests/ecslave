@@ -54,9 +54,9 @@ function load_module()
       arrayTX=( )
       for i in $INTERFACE; do
         echo $contTX"- "$i
-        arrayRX[$indexTX]=$i
-        contRX=$(($contTX+1))
-        indexRX=$(($indexTX+1))
+        arrayTX[$indexTX]=$i
+        contTX=$(($contTX+1))
+        indexTX=$(($indexTX+1))
       done
 
       # Read option
